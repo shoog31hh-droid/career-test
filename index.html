@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>اختبار الميول المهنية الذكي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 100px;
+            box-sizing: border-box;
+        }
+.navbar {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 20px 40px;
+      border-bottom: 1px solid #e6e9ee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      direction: ltr;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-size: 22px;
+      order: 0;
+      font-weight: bold;
+      color: rgb(10, 10, 151);
+
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      margin-left: 20px;
+      order: 1;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      padding: 8px 15px;
+      border: 1px solid #000;
+      border-radius: 20px;
+      transition: 0.3s;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: rgb(10, 10, 151);
+      color: #fff;
+    }
+
+    .start-screen {
+      width: 100%;
+      min-height: 380px;
+      max-width: 700px;
+      background-color: #fff;
+      padding: 50px;
+      border: 1px solid #e6e9ee;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(18, 38, 63, 0.06);
+      margin-top: 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+}
+        
+        .start-screen {
+            width: 100%;
+            min-height: 380px;
+            max-width: 700px;
+            background-color: #fff;
+            padding: 50px;
+            border: 1px solid #e6e9ee;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(18, 38, 63, 0.06);
+            margin-top: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .start-screen h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: rgb(10, 10, 151);
+        }
+
+        .start-description {
+            font-size: 18px;
+            color: #000;
+            line-height: 1.6;
+            font-weight: 500;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .start-screen button {
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: rgb(10, 10, 151);
+            color: white;
+            border: none;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(25, 118, 255, 0.18);
+        }
+
+        .start-screen button:hover {
+            background-color: #000080;
+        }
+
+        .score-container,
+        #display-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #e6e9ee;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(18, 38, 63, 0.06);
+            text-align: center;
+            margin-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .number-of-question {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: left;
+            color: #000;
+        }
+
+        .question {
+            font-weight: 800;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            color: #000;
+        }
+
+        .option-div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            border: 1px solid #e6e9ee;
+            border-radius: 6px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .option-div:hover {
+            background-color: #f1f1f1;
+        }
+
+        .option-div input[type="radio"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgb(10, 10, 151);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .option-div input[type="radio"]:checked {
+            background-color: rgb(10, 10, 151);
+            box-shadow: 0 0 0 3px rgba(10, 10, 151, 0.2);
+        }
+
+        button {
+            padding: 14px 22px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(10, 10, 151);
+            color: white;
+            margin-top: 15px;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(25, 118, 255, 0.18);
+        }
+
+        button:hover:enabled {
+            background-color: #000080;
+        }
+
+        button:disabled {
+            background-color: #a0c4ff;
+            cursor: not-allowed;
+        }
+
+        .progress {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .progress-dot {
+            width: 14px;
+            height: 14px;
+            background: #e6e9ee;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .progress-dot.active {
+            background: rgb(10, 10, 151);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .career-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            background-color: #3498db;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .category-section {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #e8f4fc;
+            border-radius: 8px;
+            border-left: 4px solid #2980b9;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+
+        .career-item {
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            background-color: #d6eaf8;
+            border-radius: 4px;
+        }
+
+        .top-career {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        .detection-message {
+            background-color: #e8f8f5;
+            border: 1px solid #a9dfbf;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #0e6655;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Career Quest</div>
+        <div class="nav-links">
+            <a href="#">الرئيسية</a>
+            <a href="#" class="active">اختبار الميول</a>
+            <a href="#">المحاكاة</a>
+            <a href="#">استكشاف</a>
+        </div>
+    </nav>
+
+    <div class="start-screen">
+        <h1>اختبار الميول المهنية </h1>
+        <p class="start-description"> أجب عن الأسئلة لاكتشاف المهن التي تناسب شخصيتك وقدرتك</p>
+
+        <button id="start-button">ابدأ الاختبار</button>
+    </div>
+
+    <div id="display-container" class="hide">
+        <div class="stage-indicator" id="stage-indicator"></div>
+        <p class="number-of-question"></p>
+        <div id="container"></div>
+        <div class="progress" id="progress-dots"></div>
+        <button id="next-button" disabled>التالي</button>
+    </div>
+
+    <div class="score-container hide">
+        <h2>نتيجة الاختبار</h2>
+        <div id="user-score"></div>
+        <div class="career-result" id="career-result"></div>
+    </div>
+
+
+
+    <script>
+
+        // العناصر الأساسية من DOM
+        let quizContainer = document.getElementById("container");
+        let nextBtn = document.getElementById("next-button");
+        let countOfQuestion = document.querySelector(".number-of-question");
+        let displayContainer = document.getElementById("display-container");
+        let scoreContainer = document.querySelector(".score-container");
+        let userScore = document.getElementById("user-score");
+        let careerResult = document.getElementById("career-result");
+        let startScreen = document.querySelector(".start-screen");
+        let startButton = document.getElementById("start-button");
+        let progressDots = document.getElementById("progress-dots");
+        let stageIndicator = document.getElementById("stage-indicator");
+
+        // المتغيرات العامة
+        let questionCount;
+        let careerScores = {};
+        let selectedQuestions = [];
+        let allCareers = new Set();
+        let userAnswers = {};
+        let currentStage = 1; // 1: المرحلة الأولى، 2: المرحلة الثانية
+        let detectedCategory = null;
+        let allQuestionsData = null; // سيتم تحميله من ملف JSON
+
+        // التصنيفات المهنية
+        const careerCategories = {
+            "الصحة": ["طبيب", "ممرض", "جرّاح"],
+            "التعليم": ["معلم", "مرشد طلابي"],
+            "الهندسة": ["مهندس برمجيات", "مهندس معماري", "مهندس ميكانيكا"],
+            "الفن": ["فنان تشكيلي", "مصمم جرافيك"],
+            "التقنية": ["مبرمج", "مختص أمن سيبراني"],
+            "الأعمال والإدارة": ["محاسب", "مسوق", "موظف موارد بشرية"]
+        };
+
+        // عدد النقاط في شريط التقدم
+        let totalDots = 5; // للمرحلة الأولى
+
+        // دالة لتحميل بيانات الأسئلة من ملف JSON
+        async function loadQuestionsData() {
+            try {
+                const response = await fetch('quiz.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                allQuestionsData = await response.json();
+                console.log("تم تحميل بيانات الأسئلة بنجاح");
+                return true;
+            } catch (error) {
+                console.error("خطأ في تحميل ملف JSON:", error);
+                alert("فشل في تحميل بيانات الأسئلة. يرجى التحقق من وجود ملف quiz.json");
+                return false;
+            }
+        }
+
+        // دالة لاستخراج جميع المهن من البيانات
+        function extractAllCareers() {
+            allCareers.clear();
+
+            if (!allQuestionsData) return;
+
+            for (const category in allQuestionsData) {
+                for (const career in allQuestionsData[category]) {
+                    allCareers.add(career);
+                }
+            }
+
+            console.log("المهن المستخرجة:", Array.from(allCareers));
+        }
+
+        // دالة للحصول على النقاط بناءً على نوع هيكل الخيارات
+        function getScoresForChoice(question, choiceValue) {
+            if (Array.isArray(question.choices)) {
+                const choiceObj = question.choices.find(c => c.text === choiceValue);
+                return choiceObj ? choiceObj.scores : {};
+            } else if (question.choices && typeof question.choices === 'object') {
+                return question.choices[choiceValue] || {};
+            }
+            return {};
+        }
+
+        // دالة للحصول على قائمة الخيارات بناءً على نوع هيكل السؤال
+        function getChoicesList(question) {
+            if (Array.isArray(question.choices)) {
+                return question.choices.map(c => c.text);
+            } else if (question.choices && typeof question.choices === 'object') {
+                return Object.keys(question.choices);
+            }
+            return [];
+        }
+
+        // دالة لاختيار أسئلة عشوائية من جميع المجالات
+        function selectRandomGeneralQuestions(count) {
+            const allQuestions = [];
+
+            if (!allQuestionsData) return [];
+
+            // جمع جميع الأسئلة من جميع المجالات والمهن
+            for (const category in allQuestionsData) {
+                for (const career in allQuestionsData[category]) {
+                    allQuestionsData[category][career].forEach(question => {
+                        allQuestions.push({
+                            ...question,
+                            category: category,
+                            career: career
+                        });
+                    });
+                }
+            }
+
+            // اختيار أسئلة عشوائية
+            const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, Math.min(count, allQuestions.length));
+        }
+
+        // دالة لاختيار أسئلة متخصصة من مجال معين
+        function selectSpecializedQuestions(category, count) {
+            const specializedQuestions = [];
+
+            if (!allQuestionsData || !allQuestionsData[category]) return [];
+
+            // جمع جميع الأسئلة من المجال المحدد
+            for (const career in allQuestionsData[category]) {
+                allQuestionsData[category][career].forEach(question => {
+                    specializedQuestions.push({
+                        ...question,
+                        category: category,
+                        career: career
+                    });
+                });
+            }
+
+            // التأكد من وجود أسئلة كافية
+            if (specializedQuestions.length === 0) {
+                console.log(`لا توجد أسئلة في مجال ${category}`);
+                return [];
+            }
+
+            // اختيار الأسئلة المطلوبة فقط
+            const selectedCount = Math.min(count, specializedQuestions.length);
+            const shuffled = specializedQuestions.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, selectedCount);
+
+            console.log(`تم اختيار ${selected.length} سؤال من أصل ${specializedQuestions.length} سؤال في مجال ${category}`);
+            return selected;
+        }
+
+        // دالة لتحديد التصنيف المهني
+        function getCareerCategory(career) {
+            for (const category in careerCategories) {
+                if (careerCategories[category].includes(career)) {
+                    return category;
+                }
+            }
+            return "أخرى";
+        }
+
+        // إنشاء نقاط التقدم
+        function createProgressDots(total) {
+            progressDots.innerHTML = "";
+
+            for (let i = 0; i < total; i++) {
+                let dot = document.createElement("div");
+                dot.classList.add("progress-dot");
+                progressDots.appendChild(dot);
+            }
+        }
+
+        // تحديث نقاط التقدم
+        function updateProgressDots(index) {
+            let dots = document.querySelectorAll(".progress-dot");
+            dots.forEach((dot) => dot.classList.remove("active"));
+
+            if (dots.length > 0) {
+                let currentDot = index % dots.length;
+                dots[currentDot].classList.add("active");
+            }
+        }
+
+        // التعامل مع النقر على زر التالي
+        nextBtn.addEventListener("click", () => {
+            // حفظ إجابة السؤال الحالي
+            const currentQuestion = selectedQuestions[questionCount];
+            const selectedOption = document.querySelector(`input[name="question${currentQuestion.id}"]:checked`);
+
+            if (selectedOption) {
+                userAnswers[currentQuestion.id] = selectedOption.value;
+
+                // حساب النقاط للإجابة الحالية
+                const points = getScoresForChoice(currentQuestion, selectedOption.value);
+                for (const career in points) {
+                    if (careerScores.hasOwnProperty(career)) {
+                        careerScores[career] += points[career];
+                    } else {
+                        careerScores[career] = points[career];
+                    }
+                }
+            }
+
+            if (questionCount < selectedQuestions.length - 1) {
+                questionCount += 1;
+                quizDisplay(questionCount);
+                updateProgressDots(questionCount);
+            } else {
+                // انتهاء المرحلة الحالية
+                if (currentStage === 1) {
+                    // انتقل إلى المرحلة الثانية
+                    startStageTwo();
+                } else {
+                    // انتهاء الاختبار بالكامل
+                    displayContainer.classList.add("hide");
+                    scoreContainer.classList.remove("hide");
+                    calculateResults();
+                }
+            }
+        });
+
+        // عرض السؤال الحالي
+        const quizDisplay = (questionCount) => {
+            let quizCards = document.querySelectorAll(".container-mid");
+            quizCards.forEach((card) => card.classList.add("hide"));
+
+            if (quizCards[questionCount]) {
+                quizCards[questionCount].classList.remove("hide");
+            }
+
+            // عرض رقم السؤال الحالي من إجمالي الأسئلة في المرحلة
+            const currentQuestionNumber = questionCount + 1;
+            const totalQuestionsInStage = selectedQuestions.length;
+            countOfQuestion.innerHTML = `السؤال ${currentQuestionNumber} من ${totalQuestionsInStage}`;
+
+            nextBtn.disabled = true;
+            nextBtn.innerText = (questionCount === selectedQuestions.length - 1) ?
+                (currentStage === 1 ? "اكتشف مجالي" : "إنهاء الاختبار") : "التالي";
+        };
+
+        // إنشاء واجهة الأسئلة
+        function quizCreator() {
+            // تهيئة كائن النقاط لجميع المهن
+            careerScores = {};
+            allCareers.forEach(career => {
+                careerScores[career] = 0;
+            });
+
+            // تهيئة إجابات المستخدم
+            userAnswers = {};
+
+            quizContainer.innerHTML = "";
+
+            for (let i = 0; i < selectedQuestions.length; i++) {
+                let question = selectedQuestions[i];
+                let div = document.createElement("div");
+                div.classList.add("container-mid", "hide");
+
+                let question_DIV = document.createElement("p");
+                question_DIV.classList.add("question");
+                question_DIV.innerHTML = question.question;
+                div.appendChild(question_DIV);
+
+                // الحصول على الخيارات من بيانات السؤال باستخدام الدالة المساعدة
+                const choices = getChoicesList(question);
+
+                choices.forEach((option) => {
+                    let label = document.createElement("label");
+                    label.classList.add("option-div");
+
+                    let input = document.createElement("input");
+                    input.type = "radio";
+                    input.name = "question" + question.id;
+                    input.value = option;
+                    input.onclick = () => checker(label);
+
+                    let span = document.createElement("span");
+                    span.innerText = option;
+
+                    label.appendChild(input);
+                    label.appendChild(span);
+                    div.appendChild(label);
+                });
+
+                quizContainer.appendChild(div);
+            }
+        }
+
+        // التعامل مع اختيار الإجابة
+        function checker(userOption) {
+            let options = document.getElementsByClassName("container-mid")[questionCount].querySelectorAll(".option-div");
+            options.forEach((el) => el.classList.remove("selected"));
+            userOption.classList.add("selected");
+            nextBtn.disabled = false;
+        }
+
+        // دالة لتحديد المجال الأعلى نقاطًا بعد المرحلة الأولى
+        function detectTopCategory() {
+            const categoryScores = {};
+
+            // حساب نقاط كل تصنيف
+            for (const category in careerCategories) {
+                categoryScores[category] = 0;
+                careerCategories[category].forEach(career => {
+                    if (careerScores[career]) {
+                        categoryScores[category] += careerScores[career];
+                    }
+                });
+            }
+
+            // تحديد التصنيف الأعلى
+            let topCategory = null;
+            let maxScore = 0;
+
+            for (const category in categoryScores) {
+                if (categoryScores[category] > maxScore) {
+                    maxScore = categoryScores[category];
+                    topCategory = category;
+                }
+            }
+
+            console.log("نقاط التصنيفات:", categoryScores);
+            console.log("التصنيف الأعلى:", topCategory);
+
+            return topCategory;
+        }
+
+        // بدء المرحلة الثانية
+        async function startStageTwo() {
+            detectedCategory = detectTopCategory();
+
+            if (!detectedCategory) {
+                alert("لم يتمكن النظام من تحديد مجالك المهني. يرجى المحاولة مرة أخرى.");
+                return;
+            }
+
+            // عرض رسالة للمستخدم
+            const messageDiv = document.createElement("div");
+            messageDiv.className = "detection-message";
+            messageDiv.innerHTML = `
+    <h3>تم تحديد مجالك المهني!</h3>
+    <p>بناءً على إجاباتك، يبدو أنك تميل لمجال: <strong>${detectedCategory}</strong></p>
+    <p>الآن سنجري لك اختبارًا متخصصًا لتحديد المهنة الأنسب لك داخل هذا المجال</p>
+  `;
+
+            displayContainer.innerHTML = "";
+            displayContainer.appendChild(messageDiv);
+
+            const continueBtn = document.createElement("button");
+            continueBtn.className = "start-button";
+            continueBtn.textContent = "ابدأ الاختبار المتخصص";
+            continueBtn.style.cssText = `
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+  `;
+
+            continueBtn.onclick = async () => {
+                currentStage = 2;
+                totalDots = 15;
+                await initializeStageTwo();
+            };
+
+            displayContainer.appendChild(continueBtn);
+        }
+
+        // تهيئة المرحلة الثانية
+        async function initializeStageTwo() {
+            // اختيار 15 سؤال متخصص من المجال المحدد
+            selectedQuestions = selectSpecializedQuestions(detectedCategory, 15);
+
+            console.log("عدد الأسئلة المختارة للمرحلة الثانية:", selectedQuestions.length);
+
+            if (selectedQuestions.length === 0) {
+                alert("لا توجد أسئلة متاحة لهذا المجال. يرجى التحقق من البيانات.");
+                return;
+            }
+
+            questionCount = 0;
+
+            // إعادة بناء واجهة الاختبار
+            displayContainer.innerHTML = `
+    <div class="stage-indicator" id="stage-indicator">المرحلة الثانية: الاختبار المتخصص في مجال ${detectedCategory}</div>
+    <p class="number-of-question"></p>
+    <div id="container"></div>
+    <div class="progress" id="progress-dots"></div>
+    <button id="next-button" disabled>التالي</button>
+  `;
+
+            // إعادة تعيين العناصر
+            quizContainer = document.getElementById("container");
+            nextBtn = document.getElementById("next-button");
+            countOfQuestion = document.querySelector(".number-of-question");
+            progressDots = document.getElementById("progress-dots");
+            stageIndicator = document.getElementById("stage-indicator");
+
+            // إعادة إنشاء واجهة الأسئلة
+            quizCreator();
+
+            // عرض السؤال الأول مع الرقم الصحيح
+            quizDisplay(0);
+
+            createProgressDots(15);
+            updateProgressDots(0);
+
+            // إعادة ربط الأحداث
+            nextBtn.addEventListener("click", function () {
+                // حفظ إجابة السؤال الحالي
+                const currentQuestion = selectedQuestions[questionCount];
+                const selectedOption = document.querySelector(`input[name="question${currentQuestion.id}"]:checked`);
+
+                if (selectedOption) {
+                    userAnswers[currentQuestion.id] = selectedOption.value;
+
+                    // حساب النقاط للإجابة الحالية
+                    const points = getScoresForChoice(currentQuestion, selectedOption.value);
+                    for (const career in points) {
+                        if (careerScores.hasOwnProperty(career)) {
+                            careerScores[career] += points[career];
+                        } else {
+                            careerScores[career] = points[career];
+                        }
+                    }
+                }
+
+                if (questionCount < selectedQuestions.length - 1) {
+                    questionCount += 1;
+                    quizDisplay(questionCount);
+                    updateProgressDots(questionCount);
+                } else {
+                    // انتهاء الاختبار بالكامل
+                    displayContainer.classList.add("hide");
+                    scoreContainer.classList.remove("hide");
+                    calculateResults();
+                }
+            });
+        }
+
+        // حساب النتائج النهائية
+        // حساب النتائج النهائية
+        function calculateResults() {
+            // تحويل النتائج إلى مصفوفة وترتيبها تنازلياً
+            const resultsArray = Object.entries(careerScores)
+                .map(([career, score]) => ({ career, score, category: getCareerCategory(career) }))
+                .sort((a, b) => b.score - a.score);
+
+            // الحصول على أعلى ثلاث نتائج
+            const topResults = resultsArray.slice(0, 3);
+
+            let resultHTML = `<h3>المهن الأكثر توافقاً معك:</h3>`;
+
+            // حساب أقصى درجة ممكنة (عدد الأسئلة × 3)
+            const maxPossibleScore = 20 * 3; // 5 أسئلة أولية + 15 متخصصة
+
+            topResults.forEach((result, index) => {
+                const percentage = Math.round((result.score / maxPossibleScore) * 100);
+                resultHTML += `
+      <div class="career-badge">${index + 1}. ${result.career} (${percentage}%) - ${result.category}</div>
+    `;
+            });
+
+            userScore.innerHTML = `أكملت ${selectedQuestions.length + 5} سؤالاً بنجاح!`;
+            careerResult.innerHTML = resultHTML;
+        }
+
+        // تهيئة الاختبار
+        async function initial() {
+            // تحميل بيانات الأسئلة أولاً
+            const loaded = await loadQuestionsData();
+            if (!loaded) {
+                return;
+            }
+
+            extractAllCareers();
+
+            // اختيار 5 أسئلة عشوائية من جميع المجالات
+            selectedQuestions = selectRandomGeneralQuestions(5);
+
+            if (selectedQuestions.length === 0) {
+                alert("لا توجد أسئلة متاحة للاختبار. يرجى التحقق من البيانات.");
+                return;
+            }
+
+            currentStage = 1;
+            totalDots = 5;
+            stageIndicator.textContent = "المرحلة الأولى: تحديد المجال المهني";
+
+            quizCreator();
+            questionCount = 0;
+            quizDisplay(questionCount);
+            createProgressDots(totalDots);
+            updateProgressDots(questionCount);
+        }
+
+        // بدء الاختبار
+        startButton.addEventListener("click", async () => {
+            startScreen.classList.add("hide");
+            displayContainer.classList.remove("hide");
+            await initial();
+        });
+
+        // التهيئة الأولية عند تحميل الصفحة
+        window.onload = () => {
+            startScreen.classList.remove("hide");
+            displayContainer.classList.add("hide");
+        };
+ 
+
+        
+    </script>
+</body>
+
+</html>
